@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Contenedor plegable</title>
+<style>
+  :root{
+    --panel-bg: #ffffff;
+    --panel-border: #d7d7d7;
+    --accent: #2563eb; /* azul */
+    --radius: 10px;
+  }
+
+  body { font-family: system-ui, Arial; padding: 24px; background: #f6f7fb; color: #111; }
+
+  .fold {
+    max-width: 820px;
+    margin: 0 auto 16px;
+    border: 1px solid var(--panel-border);
+    background: var(--panel-bg);
+    border-radius: var(--radius);
+    box-shadow: 0 4px 14px rgba(16,24,40,0.04);
+    overflow: hidden;
+  }
+
+  .fold__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 12px 16px;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .fold__title {
+    display:flex;
+    align-items:center;
+    gap: 10px;
+    font-weight: 600;
+    font-size: 16px;
+  }
+
+  .fold__badge {
+    font-size: 12px;
+    background: rgba(37,99,235,0.08);
+    color: var(--accent);
+    padding: 4px 8px;
+    border-radius: 999px;
+  }
+
+  .fold__actions { display:flex; gap:8px; align-items:center; }
+
+  .btn {
+    border: 1px solid transparent;
+    background: transparent;
+    padding: 6px 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+  }
+  .btn--primary {
+    background: var(--accent);
+    color: white;
+    border-color: rgba(37,99,235,0.9);
+  }
+  .btn--icon { padding: 6px; font-weight: 700; }
+
+  /* Panel con altura animada */
+  .fold__panel {
+    /* empezar cerrada */
+    height: 0;
+    overflow: hidden;
+    transition: height 280ms cubic-bezier(.2,.9,.3,1);
+  }
+
+  .fold__panel-inner {
+    padding: 16px;
+    border-top: 1px solid var(--panel-border);
+  }
+
+  /* estado abierto (clase toggled por JS) */
+  .fold.is-open .fold__header { background: linear-gradient(90deg, rgba(37,99,235,0.03), transparent); }
+  .fold.is-open .fold__title { color: var(--accent); }
+
+  /* pequeño estilo responsive */
+  @media (max-width:520px){
+    .fold__header { padding: 10px; }
+    .fold__panel-inner { padding: 12px; }
+    .fold__title { font-size: 15px; }
+  }
+</style>
+</head>
+<body>
+
+<h1>Contenedor que abre y cierra</h1>
+
+<!-- Contenedor plegable -->
+<section class="fold" id="miFold">
+  <div class="fold__header" id="miFoldHeader" role="button" aria-controls="miFoldPanel" aria-expanded="false" tabindex="0">
+    <div class="fold__title">
+      <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path fill="currentColor" d="M12 2L2 7v7c0 5 3.5 9.7 10 13 6.5-3.3 10-8 10-13V7l-10-5z"></path>
+      </svg>
+      <span>Información importante</span>
+      <span class="fold__badge" id="miFoldBadge">Nuevo</span>
+    </div>
+
+    <div class="fold__actions">
+      <button class="btn" id="openBtn" title="Abrir" aria-label="Abrir">Abrir</button>
+      <button class="btn btn--primary" id="toggleBtn" aria-controls="miFoldPanel" aria-expanded="false">Abrir/Cerrar</button>
+      <button class="btn btn--icon" id="closeBtn" title="Cerrar panel" aria-label="Cerrar">&times;</button>
+    </div>
+  </div>
+
+  <div class="fold__panel" id="miFoldPanel" role="region" aria-labelledby="miFoldHeader">
+    <div class="fold__panel-inner">
+      <h2>Contenido del contenedor</h2>
+      <p>Este contenedor puede abrirse y cerrarse. Aquí puedes poner cualquier información: texto, listas, imágenes, formularios, tablas, etc.</p>
+
+      <ul>
+        <li>Elemento 1 — descripción breve.</li>
+        <li>Elemento 2 — otra línea de info.</li>
+        <li>Elemento 3 — enlace o acción.</li>
+      </ul>
+
+      <p>También puedes controlar el estado desde JavaScript (ver ejemplo más abajo).</p>
+    </div>
+  </div>
+</section>
+
+<script>
+/* Comportamiento JS: toggle con animación de altura.
+   Usa la técnica de medir scrollHeight para transicionar altura.
+*/
+
+(function () {
+  const fold = document.getElementById('miFold');
+  const header = document.getElementById('miFoldHeader');
+  const panel = document.getElementById('miFoldPanel');
+  const toggleBtn = document.getElementById('toggleBtn');
+  const openBtn = document.getElementById('openBtn');
+  const closeBtn = document.getElementById('closeBtn');
+
+  // helpers
+  function openPanel(instant = false) {
+    if (fold.classList.contains('is-open')) return;
+    fold.classList.add('is-open');
+    header.setAttribute('aria-expanded','true');
+    toggleBtn.setAttribute('aria-expanded','true');
+
+    // medir y animar altura
+    const full = panel.scrollHeight;
+    panel.style.height = full + 'px';
+
+    if (instant) {
+      panel.style.transition = 'none';
+      requestAnimationFrame(() => {
+        panel.style.height = full + 'px';
+        // forzar reflow then restore transition
+        requestAnimationFrame(() => panel.style.transition = '');
+      });
+    }
+  }
+
+  function closePanel(instant = false) {
+    if (!fold.classList.contains('is-open')) return;
+    // fijar altura actual para animar a 0
+    const curr = panel.scrollHeight;
+    panel.style.height = curr + 'px';
+    // small delay to allow browser to register the height before switching to 0
+    requestAnimationFrame(() => {
+      panel.style.height = '0px';
+    });
+
+    fold.classList.remove('is-open');
+    header.setAttribute('aria-expanded','false');
+    toggleBtn.setAttribute('aria-expanded','false');
+
+    if (instant) {
+      panel.style.transition = 'none';
+      requestAnimationFrame(() => {
+        panel.style.height = '0px';
+        requestAnimationFrame(() => panel.style.transition = '');
+      });
+    }
+  }
+
+  function togglePanel() {
+    if (fold.classList.contains('is-open')) closePanel();
+    else openPanel();
+  }
+
+  // después de la transición, limpiamos el estilo inline si está abierto (para permitir contenido dinámico)
+  panel.addEventListener('transitionend', (e) => {
+    if (fold.classList.contains('is-open')) {
+      panel.style.height = 'auto'; // permite contenido variable sin romper el layout
+    } else {
+      // si está cerrado, dejamos height 0
+      panel.style.height = '0px';
+    }
+    // restaurar transition si se había quitado
+    panel.style.transition = '';
+  });
+
+  // eventos
+  header.addEventListener('click', (e) => {
+    // evita doble disparo si se hace click en los botones internos
+    if (e.target.closest('button')) return;
+    togglePanel();
+  });
+
+  // soporte teclado: Enter / Space para el header
+  header.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      togglePanel();
+    } else if (e.key === 'Escape') {
+      closePanel();
+    }
+  });
+
+  toggleBtn.addEventListener('click', (e) => { e.stopPropagation(); togglePanel(); });
+  openBtn.addEventListener('click', (e) => { e.stopPropagation(); openPanel(); });
+  closeBtn.addEventListener('click', (e) => { e.stopPropagation(); closePanel(); });
+
+  // Ejemplos de funciones públicas para controlar desde fuera:
+  window.miFold = {
+    open: () => openPanel(),
+    close: () => closePanel(),
+    toggle: () => togglePanel(),
+    isOpen: () => fold.classList.contains('is-open')
+  };
+
+  // abrir por defecto si quieres:
+  // openPanel();
+})();
+</script>
+</body>
+</html>

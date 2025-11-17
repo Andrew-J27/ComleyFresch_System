@@ -1,0 +1,147 @@
+/* ---------------------------- */
+/* CONTENEDOR GENERAL LOGIN     */
+/* ---------------------------- */
+
+#cuerpo_login {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr; /* Left más ancho, right estilo login */
+    gap: 40px;
+    padding: 40px 60px;
+    margin-top: 130px; /* Para no quedar debajo del header fijo */
+    min-height: calc(100vh - 130px);
+    background-color: #f7f9fc;
+    font-family: "Segoe UI", sans-serif;
+}
+
+
+/* ---------------------------- */
+/* ASIDES GENERALES             */
+/* ---------------------------- */
+
+.lados {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+
+
+/* ---------------------------- */
+/* ASIDE IZQUIERDO (SCROLLABLE) */
+/* ---------------------------- */
+
+#left {
+    overflow-y: auto;
+    max-height: calc(100vh - 180px); /* Cabe por debajo del header */
+    border-left: 5px solid #0b2545;
+}
+
+#left h2 {
+    font-size: 2rem;
+    color: #0b2545;
+    margin-bottom: 20px;
+}
+
+.topics {
+    margin-bottom: 30px;
+}
+
+.topics h3 {
+    font-size: 1.4rem;
+    color: #0b2545;
+}
+
+.topics span {
+    font-size: 1rem;
+    color: #333;
+    line-height: 1.5;
+}
+
+
+/* --------------------------------- */
+/* ASIDE DERECHO (FIJO Y CENTRADO)   */
+/* --------------------------------- */
+
+#right {
+    position: sticky;
+    top: 150px; /* Permite que siga al scroll, pero no se mueva */
+    height: fit-content;
+    text-align: center;
+}
+
+#right h2 {
+    font-size: 2rem;
+    margin-bottom: 25px;
+    color: #0b2545;
+}
+
+
+/* ---------------------------- */
+/* FORMULARIO LOGIN             */
+/* ---------------------------- */
+
+#form_login {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+#form_login label {
+    font-size: 1rem;
+    color: #0b2545;
+    font-weight: 600;
+    text-align: left;
+}
+
+#form_login input {
+    padding: 12px 14px;
+    border-radius: 8px;
+    border: 1px solid #cccccc;
+    font-size: 1rem;
+}
+
+#form_login input:focus {
+    border-color: #0b2545;
+    outline: none;
+    box-shadow: 0 0 5px rgba(11,37,69,0.3);
+}
+
+
+/* ---------------------------- */
+/* BOTÓN LOGIN (ESTILO FACEBOOK)*/
+/* ---------------------------- */
+
+#login_btn {
+    margin-top: 15px;
+    padding: 12px 14px;
+    background-color: #0b2545;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+#login_btn:hover {
+    background-color: #103b75;
+}
+
+
+/* ---------------------------- */
+/* SCROLLBARS ELEGANTES         */
+/* ---------------------------- */
+
+#left::-webkit-scrollbar {
+    width: 8px;
+}
+
+#left::-webkit-scrollbar-thumb {
+    background-color: #0b2545;
+    border-radius: 8px;
+}
+
+#left::-webkit-scrollbar-track {
+    background-color: #e0e6ef;
+}

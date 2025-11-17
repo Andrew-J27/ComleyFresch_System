@@ -1,0 +1,148 @@
+
+
+/* ------------------- */
+/* MODO OSCURO FORMAL */
+body.modo-oscuro {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+body.modo-oscuro header.encabezado {
+    background-color: #1a1a1a;
+    color: #f2c94c;
+}
+
+body.modo-oscuro .contenedor {
+    background-color: #1e1e1e;
+    color: #0c0c0c;
+    border-color: #333;
+}
+
+body.modo-oscuro #cont_btns .btn {
+    background-color: #1a1a1a;
+    color: #f2c94c;
+    border-color: #f2c94c;
+}
+
+body.modo-oscuro #cont_btns .btn:hover {
+    background-color: #f2c94c;
+    color: #1a1a1a;
+}
+
+/* -------------------------------------------------- */
+/* MODO OSCURO – Activado cuando el body tiene .dark-mode */
+/* -------------------------------------------------- */
+
+body.dark-mode {
+    background-color: #0f0f0f;
+    color: #e6e6e6;
+}
+
+/* CONTENEDORES */
+body.dark-mode .contenedor {
+    background-color: #1a1a1a;
+    border-color: #333;
+    box-shadow: 0 6px 15px rgba(255, 255, 255, 0.05);
+}
+
+/* CARDS */
+body.dark-mode .cards,
+body.dark-mode .card {
+    background-color: #1c1c1c;
+    border-color: #3a3a3a;
+    box-shadow: 0 2px 8px rgba(255,255,255,0.05);
+}
+
+/* TITULOS */
+body.dark-mode .titulo,
+body.dark-mode .titulo_formulario {
+    color: #66aaff;
+    border-bottom-color: #444;
+}
+
+/* LABELS */
+body.dark-mode .label_style {
+    color: #e6e6e6;
+}
+
+/* INPUTS Y SELECTS */
+body.dark-mode label input[type="text"],
+body.dark-mode label input[type="date"],
+body.dark-mode label select {
+    background-color: #2a2a2a;
+    border-color: #555;
+    color: #e6e6e6;
+}
+
+body.dark-mode label input[type="text"]:focus,
+body.dark-mode label input[type="date"]:focus,
+body.dark-mode label select:focus {
+    border-color: #66aaff;
+    box-shadow: 0 0 5px rgba(102,170,255,0.3);
+}
+
+/* TABLAS */
+body.dark-mode .table,
+body.dark-mode .tabla,
+body.dark-mode .tabla_resultados {
+    color: #e6e6e6;
+}
+
+body.dark-mode .table th,
+body.dark-mode .tabla th,
+body.dark-mode .tabla_resultados th {
+    background-color: #003366;
+    border-color: #222;
+}
+
+body.dark-mode .table td,
+body.dark-mode .tabla td,
+body.dark-mode .tabla_resultados td {
+    background-color: #1b1b1b;
+    border-color: #333;
+}
+
+body.dark-mode .table tbody tr:nth-child(even),
+body.dark-mode .tabla tbody tr:nth-child(even),
+body.dark-mode .tabla_resultados tbody tr:nth-child(even) {
+    background-color: #222;
+}
+
+/* BOTONES */
+body.dark-mode .botones,
+body.dark-mode .btn_buscar {
+    background-color: #004080;
+    color: #fff;
+}
+
+body.dark-mode .botones:hover,
+body.dark-mode .btn_buscar:hover {
+    background-color: #00294d;
+}
+
+/* FOLDERS */
+body.dark-mode .folder {
+    border-color: #333;
+    background-color: #1a1a1a;
+}
+
+body.dark-mode .fold_header {
+    background-color: #004080;
+}
+
+body.dark-mode .fold_panel {
+    background-color: #1c1c1c;
+    color: #e6e6e6;
+}
+
+/* INPUT NUEVOS ELEMENTOS */
+body.dark-mode .textos_nuevos_elementos {
+    background-color: #2a2a2a;
+    border-color: #555;
+    color: #e6e6e6;
+}
+
+/* PLACEHOLDERS */
+body.dark-mode input::placeholder {
+    color: #bbbbbb;
+}

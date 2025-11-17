@@ -1,0 +1,61 @@
+/* ------------------- */
+/* HEADER LOGIN */
+/* ------------------- */
+
+header.encabezado {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr; /* Logo - Título - Botón */
+    grid-template-rows: 1fr;
+    padding: 25px 40px;
+    align-items: center;
+    background-color: #0b2545; /* Azul oscuro elegante */
+    color: #ffffff;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* Logo */
+#logo_space {
+    grid-column: 1 / 2;
+    font-size: 55px;
+    justify-self: center;
+    color: #f2c94c; /* Dorado elegante */
+}
+
+/* Título */
+.title {
+    grid-column: 2 / 3;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #ffffff;
+    text-align: center;
+}
+
+/* Contenedor del botón */
+#cont_btns {
+    grid-column: 3 / 4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Botón modo oscuro */
+#cont_btns .btn {
+    padding: 10px 18px;
+    border: 1px solid #f2c94c;
+    border-radius: 8px;
+    background-color: #0b2545;
+    color: #f2c94c;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+}
+
+#cont_btns .btn:hover {
+    background-color: #f2c94c;
+    color: #0b2545;
+}
