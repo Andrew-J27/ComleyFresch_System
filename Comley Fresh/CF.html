@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--Links de los estilos-->
+    <link rel="stylesheet" href="./CSS/general.css">
+    <link rel="stylesheet" href="./CSS/header.css">
+    <link rel="stylesheet" href="./CSS/cuerpo.css">
+
+    <!--Links para otras cosas-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    
+    <!--Informacion por default del html:5-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comley Fresh</title>
+</head>
+<body>
+    <header class="encabezado">
+        <i class="fa-solid fa-sun" id="sun"></i> 
+        <h1 class="title">Comley Fresh, a law partnership</h1>
+        <nav class="nav_bar">
+            <ul class="nav_links">
+                <li>
+                    <a href="#" data-target="formularios">
+                        <i class="fa-solid fa-pen-fancy"></i> 
+                        Agregar caso
+                    </a>
+                </li>
+                <li>
+                    <a href="#" data-target="visualizacion_datos">
+                        <i class="fa-solid fa-pen-fancy"></i> 
+                        Ver casos
+                    </a>
+                </li>
+                <li>
+                    <a href="#" data-target="nuevos_elementos">
+                        <i class="fa-solid fa-pen-fancy"></i> 
+                        Agregar/Actualizar Elementos
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <div id="cont_btns">
+            <button class="btn" id="turn-off">
+                <i class="fa-solid fa-power-off" ></i>
+                Cerrar sesion
+            </button>
+            <button class="btn" id="full-moon">
+                <i class="fa-solid fa-moon"></i>
+                Modo oscuro
+            </button>
+        </div>
+    </header>
+
+    <div class="cuerpo">
+        <div id="formularios" class="contenedor">
+            <div class="cards" id="formulario_caso">
+                <h2 class="titulo">Datos del Caso</h2>
+                <fomr id="data_form_case" class="data_form">
+                    <label class="label_style" >
+                        <!--Nombre del cliente-->
+                        Customer Name:
+                        <input type="text" class="Customer_Name" name="Customer_Name">
+                    </label>
+
+                    <label class="label_style">
+                        <!--Estados del caso-->
+                        Status:
+                        <select name="Status" class="cmb_status" id="cmb_status">
+                            <option value="">Active</option>
+                            <option value="">Active - Pending Dismissal or Relieve of Atty</option>
+                            <option value="">Closed</option>
+                            <option value="">Dismissal of Atty</option>
+                            <option value="">Dismisasl of Case</option>
+                            <option value="">Dropped</option>
+                            <option value="">Relieved as Attorney</option>
+                            <option value="">Settled</option>
+                            <option value="">Settled Pending Payments</option>
+                            <option value="">Settled Waiting C&R from DA</option>
+                            <option value="">Settled Waiting Signature from Client</option>
+                            <option value="">Subbed Out</option>
+                        </select>
+                    </label>
+
+                    <label class="label_style">
+                        <!--Fecha de firma-->
+                        Date Signed:
+                        <input type="date" class="Date_Signed" name="Date_signed">
+                        <!--Conectar esta fecha de firma con Age, por que es dependiente de la fecha-->
+                    </label>
+                    <label class="label_style">
+                        <!--Fecha de liquidacion-->
+                        Date of Settlement:
+                        <input type="date" name="Date_of_Settlement">
+                        <!--Conectar la fecha de liquidacion con los dias de liquidacion por que son dependientes-->
+                    </label>
+                    <label class="label_style">
+                        <!--Fecha del incidente-->
+                        DOI:
+                        <input type="date" name="Date_of_Incident">
+                    </label>
+                    <label class="label_style">
+                        <!--Fecha de la adjudicacion-->
+                        ADJ Date:
+                        <input type="date" name="ADJ_Date">
+                    </label>
+                    <label class="label_style">
+                        <!--Numero de la adjudicacion-->
+                        ADJ No:
+                        <input type="text" name="ADJ_No">
+                    </label>
+                    <label class="label_style">
+                        <!--Numero de reclamo-->
+                        Claim No:
+                        <input type="text" name="Claim_No">
+                    </label>
+                    <label class="label_style">
+                        <!--Abogados proporcionados por la empresa-->
+                        Attorney Handing:
+                        <select name="Attorney_Handling">
+                            <option value="">Edgar</option>
+                            <option value="">Alex</option>
+                        </select>
+                    </label>
+                    <label class="label_style">
+                        <!--Asistentes asignados a los abogdos, estos se rellenaran automaticamente dependiendo del usuario-->
+                        Asistent: Usuario
+                    </label>
+                    <label class="label_style">
+                        <!--Estados del reclamo-->
+                        Claim Status: 
+                        <select name="Claim_Status">
+                            <option value="">Accepted</option>
+                            <option value="">Denied</option>
+                            <option value="">Delayed</option>
+                        </select>
+                    </label>
+                </fomr>
+            </div>
+
+            <div class="cards" id="formulario_cliente">
+                <h2 class="titulo_formulario">Datos del cliente</h2>
+                <form class="data_form" id="data_form_customer">
+
+                <label class="label_style">
+                    <!--Lenguaje de preferencia del cliente-->
+                    Client Preferred Lenguage:
+                    <select name="Customer_Preferred_Lenguage">
+                        <option value="">English</option>
+                        <option value="">Spanish</option>
+                    </select>
+                </label>
+                <label class="label_style">
+                    <!--Fecha de nacimiento del cliente-->
+                    DOB:
+                    <input type="date" name="DOB">
+                </label>
+                <label class="label_style">
+                    <!--Numero de seguridad social-->
+                    SSN:
+                    <input type="text" name="SSN">
+                </label>
+                <label class="label_style">
+                    <!--direccion-->
+                    Address:
+                    <input type="text" name="Address">
+                </label>
+                <label class="label_style">
+                    <!--Numero telefonico del cliente-->
+                    Phone Number:
+                    <input type="text" name="Phone_Number">
+                </label>
+                <label class="label_style">
+                    <!--Correo electronico del cliente-->
+                    Email:
+                    <input type="text" name="Email">
+                </label>
+                <label class="label_style">
+                    <!--Parte del cuerpo lesionada-->
+                    Injured Body Part:
+                    <input type="text" name="Injured_Body_Part">
+                </label>
+                </form>
+            </div>
+
+            <div class="cards" id="formulario_empleador">
+                <h2 class="titulo_formulario">Datos del empleador</h2>
+                <form class="data_form" id="data_form_employer">
+                    <label class="label_style">
+                        <!--Nombre de la compania del trabajador lesionado-->
+                        Employer Name:
+                        <input type="text" name="Employer_Name">
+                    </label>
+                    <label class="label_style">
+                        <!--Direccion de la compania-->
+                        Employer Address:
+                        <input type="text" name="Employer_Address">
+                    </label>
+                </form>
+            </div>
+
+            <div class="cards" id="formulario_abogado_opositor">
+                <h2 class="titulo_formulario">Datos del abogado opositor</h2>
+                <form class="data_form" id="data_form_DA">
+                    <label class="label_style">
+                        <!--Abogado de los demandados-->
+                        Defense Attorney Name:
+                        <input type="text" name="Defense_Attorney_Name">
+                    </label>
+                    <label class="label_style">
+                        <!--Firma perteneciente DA-->
+                        Law Firm:
+                        <input type="text" name="Law_Firm">
+                    </label>
+                    <label class="label_style">
+                        <!--Direccion de la firma -->
+                        Firm Address:
+                        <input type="text" name="Firm_Address">
+                    </label>
+                    <label class="label_style">
+                        <!--Numero telefonico del abogado-->
+                        DA Phone Number:
+                        <input type="text" name="DA_Phone_Number">
+                    </label>
+                    <label class="label_style">
+                        <!--Fax del abogado-->
+                        DA Fax:
+                        <input type="text" name="DA_Fax">
+                    </label>
+                    <label class="label_style">
+                        <!--correo electronico del abogado-->
+                        DA Email:
+                        <input type="text" name="DA_Email">
+                    </label>
+                    <label class="label_style">
+                        <!--Asistente del abogado-->
+                        DA Asistent:
+                        <input type="text" name="DA_Asistent">
+                    </label>
+                    <label class="label_style">
+                        <!--Numero telefonico del asistente-->
+                        DA Asistent Phone Number:
+                        <input type="text" name="DA_Asistent_Phone_Number">
+                    </label>
+                    <label class="label_style">
+                        <!--Correo electronico-->
+                        DA Asistent Email:
+                        <input type="text" name="DA_Asistent_Email">
+                    </label>
+                    <label class="label_style">
+                        <!--Fax-->
+                        DA Asistent Fax:
+                        <input type="text" name="DA_Asistent_Fax">
+                    </label>
+                </form>
+            </div>
+
+            <div class="cards" id="formulario_seguro_y_reclamo">
+                <h2 class="titulo_formulario">Datos del seguro y administrador del reclamo</h2>
+                <form class="data_form" id="data_form_SAR">
+                    <label for="" class="label_style">
+                        <!--compania envargada de emitir la poliza-->
+                        Insurance Carrier:
+                        <input type="text" name="Insurance_Carrier">
+                    </label>
+                    <label for="" class="label_style">
+                        <!--Direccion de la compania-->
+                        Carrier Address:
+                        <input type="text" name="Carrier_Address">
+                    </label>
+                    <label for="" class="label_style">
+                        <!--compania administradora del reclamo que revisa, procesa, aprueb o rechaza-->
+                        Claim Administrator:
+                        <input type="text" name="Claim_Administrator">
+                    </label>
+                    <label for="" class="label_style">
+                        <!--Direccion del administrador del reclamo-->
+                        Administrator Address:
+                        <input type="text" name="Administrator_Address">
+                    </label>
+                    <label for="" class="label_style">
+                        <!--Persona encargada de calcular y verificar el monto a pagar por la reclamacion-->
+                        Claim Adjuster:
+                        <input type="text" name="Claim_Adjuster">
+                    </label>
+                    <label for="" class="label_style">
+                        <!--Numero telefonico del ajustador-->
+                        Adjuster Phone Number:
+                        <input type="text" name="Adjuster_Phone_Number">
+                    </label>
+                    <label for="" class="label_style">
+                        <!--Correo electronico del ajustador-->
+                        Adjuster Email:
+                        <input type="text" name="Adjuster_Email">
+                    </label>
+                    <label for="" class="label_style">
+                        <!--Fax del ajustador-->
+                        Adjuster Fax:
+                        <input type="text" name="Adjuster_Fax">
+                    </label>
+                </form>
+            </div>
+
+            <div class="card" id="formulario_MPN">
+                <h2 class="titulo_formulario">Datos del Proveedor Medico</h2>
+                <form class="data_form" id="data_form_MPN">
+                    <label for="" class="label_style">
+                        <!--Telefono del proveedor medico-->
+                        MPN Phone Number:
+                        <input type="text" name="MPN_Phone_Number">
+                    </label>
+                    <label for="" class="label_style">
+                        <!--Fax del proveedor medico-->
+                        MPN Fax:
+                        <input type="text" name="MPN_Fax">
+                    </label>
+                    <label for="" class="label_style">
+                        <!--Correo electronico del proveedor medico-->
+                        MPN Email:
+                        <input type="text" name="MPN_Email">
+                    </label>
+                    <label for="" class="label_style">
+                        <!--Extension del MPN-->
+                        MPN Extension:
+                        <input type="text" name="MPN_Extension">
+                    </label>
+                    <label for="" class="label_style">
+                        <!--Enlace RPM-->
+                        MPN Link:
+                        <input type="text" name="MPN_Link">
+                    </label>
+                </form>
+            </div>
+            <div class="card" id="botones_formulario">
+                <button class="botones">
+                    <i class="fa-solid fa-save"></i>
+                    Guardar Datos
+                </button>
+                <button class="botones">
+                    <i class="fa-solid fa-cross"></i>
+                    Cancelar
+                </button>
+            </div>
+        </div>
+
+        <div id="visualizacion_datos" class="contenedor">
+            <div class="cards" id="controlares_de_busqueda">
+                <div class="general_view" id="busqueda">
+                    <!--Radio Buttons e input para selecionar el filtro de busqueda y la palabra buscar-->
+                    <div class="grupo_radiobtn">
+                        <h2 class="titulo">Opciones de busqueda</h2>
+                        <label class="label_style"><input type="radio" name="filtrado" value="filtro_fecha"> Filtrar por fecha</label>
+                        <label class="label_style"><input type="radio" name="filtrado" value="filtro_nombre"> Filtrar por nombre</label>
+                        <label class="label_style"><input type="radio" name="filtrado" value="filtro_direccion"> Filtrar por direccion</label>
+                        <label class="label_style"><input type="radio" name="filtrado" value="filtro_fax"> Filtrar por fax</label>
+                        <label class="label_style"><input type="radio" name="filtrado" value="filtro_numero"> Filtrar por numero</label>
+                        <label class="label_style"><input type="radio" name="filtrado" value="filtro_lesion"> Filtrar por lesion</label>
+                        <label class="label_style"><input type="radio" name="filtrado" value="filtro_MPN"> Filtrar por MPN</label>
+                    </div>
+                    <div class="grupo_busqueda">
+                        <div class="contenedor_cmbx">
+                            <label class="label_style">
+                                <!--Combo box para selecionar el filtro especifico-->
+                                Filtro por 1er cmbx:
+                                <select name="filtrado_rdb" id="cmb_filtrado_rdb" class="cmb_filtrado_rdb">
+                                    <option value=""></option>
+                                </select>
+                            </label>
+                            
+                            <label class="label_style" id="cmbx_filt_fecha">
+                                <!--Combo box para selecionar el filtro especifico-->
+                                Filtro por fecha:
+                                <select name="filtrado_rdb" id="cmb_filtrado_cmbx_fecha" class="cmb_filtrado_cmbx_fecha">
+                                    <option value="">Fecha especifica</option>
+                                    <option value="">Rango de fecha</option>
+                                    <option value="">Año de la fecha</option>
+                                    <option value="">Mes de la fecha</option>
+                                </select>
+                            </label>
+                        </div>
+                        <div class="contenedor_txt_busqueda">
+                            <label class="label_style">
+                                <!--Input para escribir la palabra a buscar-->
+                                Buscar:
+                                <input type="text" name="txt_busqueda" id="txt_busqueda" class="txt_busqueda" placeholder="Texto a buscar">
+                            </label>
+                            <button id="btn_buscar" class="btn_buscar">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                                Buscar
+                            </button>
+                        </div>
+                        <div class="contenedor_tabla">
+                            <table id="tabla_resultados" class="tabla_resultados" border="1">
+                                <thead>
+                                    <tr>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Rows will be dynamically added here -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="nuevos_elementos" class="contenedor">
+            <div class="card">
+            <h2>Elementos de Comley Fresh</h2>
+                <section class="folder" id="folder_abogados_defensor">
+                    <div class="fold_header">
+                        <span>Agregar/Actualizar Abogados</span>
+                    </div>
+                    <div class="fold_action"></div>
+                    <div class="fold_panel">
+                        <div class="fold_options">
+                            <label class="label_style">
+                                Informacion
+                                <input type="text" name="txt_informacion_abogado" id="txt_informacion_abogado" class="textos_nuevos_elementos" placeholder="Nombre del abogado">
+                            </label>
+                            <button class="botones">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                                Buscar
+                            </button>
+                            <button class="botones">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                                Agregar
+                            </button>
+                        </div>
+
+                        <div class="contenedor_tabla">
+                            <table id="tabla_abogados" class="tabla" border="1">
+                                <thead>
+                                    <tr>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Rows will be dynamically added here -->
+                                </tbody>
+                            </table>
+                            <button class="botones">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                                Ver Abogados
+                            </button>
+                        </div>
+                    </div>
+                </section>
+                <section class="folder" id="folder_asistente_abogado">
+                    <div class="fold_header">
+                        <span>Agregar/Actualizar Abogados</span>
+                    </div>
+                    <div class="fold_action"></div>
+                    <div class="fold_panel">
+                        
+                        <div class="fold_options">
+                            <label class="label_style">
+                                Informacion
+                                <input type="text" name="txt_informacion_asistente_abogado" id="txt_informacion_asistente_abogado" class="textos_nuevos_elementos" placeholder="Nombre del asistente del abogado">
+                            </label>
+                            <button class="botones">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                                Buscar
+                            </button>
+                            <button class="botones">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                                Agregar
+                            </button>
+                        </div>
+
+                        <div class="contenedor_tabla">
+                            <table id="tabla_asistente_abogado" class="tabla" border="1">
+                                <thead>
+                                    <tr>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Rows will be dynamically added here -->
+                                </tbody>
+                            </table>
+                            <button class="botones">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                                Ver Asistentes de los Abogados
+                            </button>
+                        </div>
+                    </div>
+                </section>
+                <section class="folder" id="folder_Estados">
+                    <div class="fold_header">
+                        <span>Agregar/Actualizar EStados de Casos</span>
+                    </div>
+                    <div class="fold_action"></div>
+                    <div class="fold_panel">
+                        <div class="fold_options">
+                            <label class="label_style">
+                                Informacion
+                                <input type="text" name="txt_informacion_estados" id="txt_informacion_estados" class="textos_nuevos_elementos" placeholder="Estados de los casos">
+                            </label>
+                            <button class="botones">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                                Buscar
+                            </button>
+                            <button class="botones">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                                Agregar
+                            </button>
+                        </div>
+
+                        <div class="contenedor_tabla">
+                            <table id="tabla_estados_casos" class="tabla" border="1">
+                                <thead>
+                                    <tr>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Rows will be dynamically added here -->
+                                </tbody>
+                            </table>
+                            <button class="botones">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                                Ver Estados de los casos
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p>© 2024 Comley Fresh. All rights reserved.</p>
+    </footer>
+    <script src="./Script/header.js"></script>
+</body>
+</html>
