@@ -57,7 +57,8 @@
         </aside>
         <aside class="lados" id="right">
             <h2>Login</h2>
-            <form action="#" id="form_login">
+            <form action="#" id="form_login" method="POST">
+                <!--{% csrf_token %}-->
                 <label for="username">Username:</label>
                 <input type="text" id="username" name="username" required>
 

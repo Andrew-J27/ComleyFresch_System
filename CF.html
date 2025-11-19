@@ -56,7 +56,7 @@
     <div class="cuerpo">
         <div id="formularios" class="contenedor">
             <!-- Formulario unificado -->
-            <form id="formulario_completo">
+            <form id="formulario_completo" method="POST" action="">
                 <!-- Sección: Datos del Caso -->
                 <div class="cards" id="formulario_caso">
                     <h2 class="titulo">Datos del Caso</h2>
@@ -136,8 +136,8 @@
                         <label class="label_style">
                             Client Preferred Lenguage:
                             <select name="Customer_Preferred_Lenguage">
-                                <option value="">English</option>
-                                <option value="">Spanish</option>
+                                <option value="english">English</option>
+                                <option value="spanish">Spanish</option>
                             </select>
                         </label>
                         <label class="label_style">
@@ -297,7 +297,7 @@
 
                 <!-- Botones principales -->
                 <div class="card" id="botones_formulario">
-                    <button type="submit" class="botones">
+                    <button type="submit" class="botones" method="POST">
                         <i class="fa-solid fa-save"></i>
                         Guardar Datos
                     </button>
@@ -309,10 +309,9 @@
             </form>
         </div>
 
-
         <div id="visualizacion_datos" class="contenedor">
             <div class="cards" id="controlares_de_busqueda">
-                <div class="general_view" id="busqueda">
+                <form class="general_view" id="busqueda" method="POST" action="">
                     <!--Radio Buttons e input para selecionar el filtro de busqueda y la palabra buscar-->
                     <div class="grupo_radiobtn">
                         <h2 class="titulo">Opciones de busqueda</h2>
@@ -368,7 +367,7 @@
                             </table>
                         </div>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
 
